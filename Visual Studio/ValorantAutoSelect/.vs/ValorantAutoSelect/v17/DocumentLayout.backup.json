@@ -1,0 +1,82 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio\\ValorantAutoSelect\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{61FAE018-8494-41E1-B646-DAE713D5A17A}|ValorantAutoSelect\\ValorantAutoSelect.csproj|c:\\users\\muham\\projeler\\mobileagentcontrol\\visual studio\\valorantautoselect\\valorantautoselect\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FAE018-8494-41E1-B646-DAE713D5A17A}|ValorantAutoSelect\\ValorantAutoSelect.csproj|solutionrelative:valorantautoselect\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FAE018-8494-41E1-B646-DAE713D5A17A}|ValorantAutoSelect\\ValorantAutoSelect.csproj|C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio\\ValorantAutoSelect\\valorantautoselect\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{61FAE018-8494-41E1-B646-DAE713D5A17A}|ValorantAutoSelect\\ValorantAutoSelect.csproj|solutionrelative:valorantautoselect\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FAE018-8494-41E1-B646-DAE713D5A17A}|ValorantAutoSelect\\ValorantAutoSelect.csproj|c:\\users\\muham\\projeler\\mobileagentcontrol\\visual studio\\valorantautoselect\\valorantautoselect\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FAE018-8494-41E1-B646-DAE713D5A17A}|ValorantAutoSelect\\ValorantAutoSelect.csproj|solutionrelative:valorantautoselect\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio\\ValorantAutoSelect\\ValorantAutoSelect\\Program.cs",
+              "RelativeDocumentMoniker": "ValorantAutoSelect\\Program.cs",
+              "ToolTip": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio\\ValorantAutoSelect\\ValorantAutoSelect\\Program.cs",
+              "RelativeToolTip": "ValorantAutoSelect\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T22:20:28.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio\\ValorantAutoSelect\\ValorantAutoSelect\\Form1.cs",
+              "RelativeDocumentMoniker": "ValorantAutoSelect\\Form1.cs",
+              "ToolTip": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio\\ValorantAutoSelect\\ValorantAutoSelect\\Form1.cs",
+              "RelativeToolTip": "ValorantAutoSelect\\Form1.cs",
+              "ViewState": "AgIAAKgAAAAAAAAAAADwv98AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T22:19:38.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio\\ValorantAutoSelect\\ValorantAutoSelect\\Form1.cs",
+              "RelativeDocumentMoniker": "ValorantAutoSelect\\Form1.cs",
+              "ToolTip": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio\\ValorantAutoSelect\\ValorantAutoSelect\\Form1.cs [Design]",
+              "RelativeToolTip": "ValorantAutoSelect\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-19T23:22:34.343Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

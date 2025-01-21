@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "978405869129",
+    "project_id": "valorantagentcontrol-1",
+    "storage_bucket": "valorantagentcontrol-1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978405869129:android:2aa23423270c3cac25e198",
+        "android_client_info": {
+          "package_name": "com.example.mobileagentcontrol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD18ouGRBI3Txfb2IhshMKkVbmRlzgRBls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

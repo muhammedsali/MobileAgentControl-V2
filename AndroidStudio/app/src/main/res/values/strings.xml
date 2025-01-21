@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mobile Agent Control</string>
+    <string name="connect">Bağlan</string>
+    <string name="disconnect">Bağlantıyı Kes</string>
+    <string name="connecting">Bağlanılıyor</string>
+    <string name="connection_error">Bağlantı hatası: %1$s</string>
+    <string name="connect_first">Önce Firebase\'e bağlanın</string>
+    <string name="connected">Firebase\'e bağlandı</string>
+    <string name="disconnected">Bağlantı kesildi</string>
+    <string name="character_selected">%1$s seçildi ve kilitleniyor</string>
+    <string name="operation_error">İşlem hatası: %1$s</string>
+</resources>
