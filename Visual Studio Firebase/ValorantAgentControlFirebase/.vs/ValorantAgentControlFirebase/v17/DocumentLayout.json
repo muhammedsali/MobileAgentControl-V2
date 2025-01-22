@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio Firebase\\ValorantAgentControlFirebase\\",
+  "WorkspaceRootPath": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\MobileAgentControl-V2\\Visual Studio Firebase\\ValorantAgentControlFirebase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D60226A0-808A-4A25-B7A3-C60ED710EB85}|ValorantAgentControlFirebase\\ValorantAgentControlFirebase.csproj|c:\\users\\muham\\projeler\\mobileagentcontrol\\visual studio firebase\\valorantagentcontrolfirebase\\valorantagentcontrolfirebase\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D60226A0-808A-4A25-B7A3-C60ED710EB85}|ValorantAgentControlFirebase\\ValorantAgentControlFirebase.csproj|c:\\users\\muham\\projeler\\mobileagentcontrol\\mobileagentcontrol-v2\\visual studio firebase\\valorantagentcontrolfirebase\\valorantagentcontrolfirebase\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D60226A0-808A-4A25-B7A3-C60ED710EB85}|ValorantAgentControlFirebase\\ValorantAgentControlFirebase.csproj|solutionrelative:valorantagentcontrolfirebase\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -32,11 +32,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio Firebase\\ValorantAgentControlFirebase\\ValorantAgentControlFirebase\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\MobileAgentControl-V2\\Visual Studio Firebase\\ValorantAgentControlFirebase\\ValorantAgentControlFirebase\\Form1.cs",
               "RelativeDocumentMoniker": "ValorantAgentControlFirebase\\Form1.cs",
-              "ToolTip": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio Firebase\\ValorantAgentControlFirebase\\ValorantAgentControlFirebase\\Form1.cs",
+              "ToolTip": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\MobileAgentControl-V2\\Visual Studio Firebase\\ValorantAgentControlFirebase\\ValorantAgentControlFirebase\\Form1.cs",
               "RelativeToolTip": "ValorantAgentControlFirebase\\Form1.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAFMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAswNwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-20T23:39:59.624Z",
               "EditorCaption": ""

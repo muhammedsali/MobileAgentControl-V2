@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kELFs4qJQzI=",
+  "dgSpecHash": "ObUvZdG/XkI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\Visual Studio Firebase\\ValorantAgentControlFirebase\\ValorantAgentControlFirebase\\ValorantAgentControlFirebase.csproj",
+  "projectFilePath": "C:\\Users\\muham\\Projeler\\MobileAgentControl\\MobileAgentControl-V2\\Visual Studio Firebase\\ValorantAgentControlFirebase\\ValorantAgentControlFirebase\\ValorantAgentControlFirebase.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muham\\.nuget\\packages\\firebaseadmin\\3.1.0\\firebaseadmin.3.1.0.nupkg.sha512",
     "C:\\Users\\muham\\.nuget\\packages\\google.api.commonprotos\\2.16.0\\google.api.commonprotos.2.16.0.nupkg.sha512",

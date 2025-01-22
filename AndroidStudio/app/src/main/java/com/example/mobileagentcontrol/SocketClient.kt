@@ -10,17 +10,8 @@ class SocketClient(private val serverIp: String, private val serverPort: Int = 1
     private var socket: Socket? = null
     private var writer: PrintWriter? = null
 
-    suspend fun connect() = withContext(Dispatchers.IO) {
-        try {
-            socket = Socket(serverIp, serverPort)
-            writer = PrintWriter(socket?.getOutputStream(), true)
-            Log.d("SocketClient", "Bağlantı başarılı")
-        } catch (e: Exception) {
-            Log.e("SocketClient", "Bağlantı hatası: ${e.message}")
-            disconnect()
-            throw e
-        }
-    }
+
+
 
     suspend fun sendCharacterSelect(character: Character) = withContext(Dispatchers.IO) {
         try {

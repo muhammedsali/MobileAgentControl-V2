@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ValorantAgentControlFirebase")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d5af535bb13521acf31380e36dd97bc7286732a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d7c0b5114a81975db93d9fec23cae841d4930ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("ValorantAgentControlFirebase")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ValorantAgentControlFirebase")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

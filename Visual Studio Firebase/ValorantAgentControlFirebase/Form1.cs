@@ -17,6 +17,7 @@ namespace ValorantAgentControlFirebase
         private Label? statusLabel;
         private Button? connectButton;
         private TextBox? pathTextBox;
+        private ListBox? logListBox;
 
         [DllImport("user32.dll")]
         static extern bool SetCursorPos(int x, int y);
@@ -35,7 +36,7 @@ namespace ValorantAgentControlFirebase
 
         private void InitializeUI()
         {
-            this.Size = new Size(400, 250);
+            this.Size = new Size(600, 400);
             this.Text = "Valorant Agent Control";
 
             statusLabel = new Label
@@ -58,6 +59,21 @@ namespace ValorantAgentControlFirebase
                 Size = new Size(70, 30),
                 Text = "Gözat"
             };
+
+            connectButton = new Button
+            {
+                Location = new Point(10, 90),
+                Size = new Size(360, 30),
+                Text = "Firebase'e Bağlan"
+            };
+
+            logListBox = new ListBox
+            {
+                Location = new Point(10, 130),
+                Size = new Size(560, 200),
+                ScrollAlwaysVisible = true
+            };
+
             browseButton.Click += (s, e) =>
             {
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -72,15 +88,24 @@ namespace ValorantAgentControlFirebase
                 }
             };
 
-            connectButton = new Button
-            {
-                Location = new Point(10, 90),
-                Size = new Size(360, 30),
-                Text = "Firebase'e Bağlan"
-            };
             connectButton.Click += ConnectButton_Click;
 
-            this.Controls.AddRange(new Control[] { statusLabel, pathTextBox, browseButton, connectButton });
+            this.Controls.AddRange(new Control[] { statusLabel, pathTextBox, browseButton, connectButton, logListBox });
+        }
+
+        private void AddLog(string message)
+        {
+            if (logListBox != null && !IsDisposed)
+            {
+                if (InvokeRequired)
+                {
+                    Invoke(new Action(() => AddLog(message)));
+                    return;
+                }
+
+                logListBox.Items.Add($"[{DateTime.Now:HH:mm:ss}] {message}");
+                logListBox.SelectedIndex = logListBox.Items.Count - 1;
+            }
         }
 
         private void InitializeFirebase(string credentialPath)
@@ -88,10 +113,11 @@ namespace ValorantAgentControlFirebase
             try
             {
                 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath);
+                AddLog("Kimlik dosyası ayarlandı");
 
                 _db = FirestoreDb.Create("valorantagentcontrol-1");
+                AddLog("Firebase veritabanı bağlantısı oluşturuldu");
 
-                // Test bağlantısı
                 var collection = _db.Collection("test");
                 var document = collection.Document("test");
                 var data = new Dictionary<string, object>
@@ -100,11 +126,13 @@ namespace ValorantAgentControlFirebase
                     { "timestamp", DateTime.UtcNow }
                 };
                 document.SetAsync(data).Wait();
+                AddLog("Test bağlantısı başarılı");
 
                 MessageBox.Show("Firebase başarıyla başlatıldı!");
             }
             catch (Exception ex)
             {
+                AddLog($"HATA: {ex.Message}");
                 MessageBox.Show($"Firebase başlatma hatası: {ex.Message}\n\nStack Trace:\n{ex.StackTrace}");
             }
         }
@@ -120,9 +148,11 @@ namespace ValorantAgentControlFirebase
                     isConnected = true;
                     if (statusLabel != null) statusLabel.Text = "Durum: Bağlandı";
                     if (connectButton != null) connectButton.Text = "Bağlantıyı Kes";
+                    AddLog("Firebase'e başarıyla bağlandı");
                 }
                 catch (Exception ex)
                 {
+                    AddLog($"Bağlantı hatası: {ex.Message}");
                     MessageBox.Show($"Bağlantı hatası: {ex.Message}");
                 }
             }
@@ -134,6 +164,7 @@ namespace ValorantAgentControlFirebase
                     if (app != null)
                     {
                         app.Delete();
+                        AddLog("Firebase bağlantısı kesildi");
                     }
                 }
                 catch { }
@@ -149,6 +180,7 @@ namespace ValorantAgentControlFirebase
         {
             if (_db == null) return;
 
+            AddLog("Komut dinlemeye başlandı");
             var collection = _db.Collection("commands");
             var listener = collection.Listen(snapshot =>
             {
@@ -158,48 +190,63 @@ namespace ValorantAgentControlFirebase
                         change.ChangeType == DocumentChange.Type.Modified)
                     {
                         var command = change.Document.ConvertTo<Command>();
+                        AddLog($"Yeni komut alındı: {command.Action}, X: {command.X}, Y: {command.Y}");
                         ProcessCommand(command);
                     }
                 }
             });
 
-            await Task.Delay(100); // Prevent method from completing immediately
+            await Task.Delay(100);
         }
 
         private void ProcessCommand(Command command)
         {
             if (command == null || string.IsNullOrEmpty(command.Action)) return;
 
+            // Debug için ham veriyi yazdıralım
+            var rawData = command.ToString();
+            AddLog($"Ham veri: {rawData}");
+            AddLog($"Komut detayları - Action: {command.Action}, X: {command.X}, Y: {command.Y}");
+
             switch (command.Action.ToLower())
             {
                 case "select":
-                    ClickAtPosition(command.X, command.Y);
+                    ClickAtPosition((int)command.X, (int)command.Y);
                     break;
                 case "lock":
-                    ClickAtPosition(950, 867); // Lock button coordinates
+                    ClickAtPosition(950, 867);
                     break;
             }
         }
 
         private void ClickAtPosition(int x, int y)
         {
-            SetCursorPos(x, y);
-            mouse_event(MOUSEEVENTF_LEFTDOWN, x, y, 0, 0);
-            System.Threading.Thread.Sleep(100);
-            mouse_event(MOUSEEVENTF_LEFTUP, x, y, 0, 0);
+            try 
+            {
+                AddLog($"Fare tıklaması başlatılıyor: X: {x}, Y: {y}");
+                SetCursorPos(x, y);
+                mouse_event(MOUSEEVENTF_LEFTDOWN, x, y, 0, 0);
+                System.Threading.Thread.Sleep(100);
+                mouse_event(MOUSEEVENTF_LEFTUP, x, y, 0, 0);
+                AddLog($"Fare tıklaması tamamlandı: X: {x}, Y: {y}");
+            }
+            catch (Exception ex)
+            {
+                AddLog($"Fare tıklama hatası: {ex.Message}");
+            }
         }
     }
 
     [FirestoreData]
     public class Command
     {
-        [FirestoreProperty]
+        [FirestoreProperty("action")]
         public string? Action { get; set; }
 
-        [FirestoreProperty]
-        public int X { get; set; }
+        [FirestoreProperty("x")]
+        public long X { get; set; }
 
-        [FirestoreProperty]
-        public int Y { get; set; }
+        [FirestoreProperty("y")]
+        public long Y { get; set; }
     }
 } 
