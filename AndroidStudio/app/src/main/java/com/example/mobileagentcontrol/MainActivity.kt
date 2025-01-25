@@ -1,22 +1,71 @@
 package com.example.mobileagentcontrol
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
-import android.widget.GridView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var characterGrid: GridView
+    private lateinit var viewPager: ViewPager2
+    private lateinit var tabLayout: TabLayout
     private lateinit var db: FirebaseFirestore
     private val TAG = "MainActivity"
     
-    private val characters = listOf(
-        Character("Jett", R.drawable.jett, 622, 475),
-        Character("Raze", R.drawable.raze, 958, 454),
-        Character("Omen", R.drawable.omen, 1260, 445)
+    private val roles = listOf(
+        "Tümü",
+        "Düellocu",
+        "Öncü",
+        "Gözcü",
+        "Kontrol Uzmanı"
     )
+    
+    private val charactersByRole = mapOf(
+        "Düellocu" to listOf(
+            Character("Jett", R.drawable.agent_jett, 622, 475),
+            Character("Raze", R.drawable.agent_raze, 958, 454),
+            Character("Reyna", R.drawable.agent_reyna, 1260, 445),
+            Character("Yoru", R.drawable.agent_yoru, 622, 475),
+            Character("Neon", R.drawable.agent_neon, 958, 454),
+            Character("Phoenix", R.drawable.agent_phoenix, 1260, 445),
+            Character("Iso", R.drawable.agent_iso, 958, 454),
+            Character("Clove", R.drawable.agent_clove, 958, 454)
+        ),
+        "Öncü" to listOf(
+            Character("Breach", R.drawable.agent_breach, 622, 475),
+            Character("Sova", R.drawable.agent_sova, 622, 475),
+            Character("Fade", R.drawable.agent_fade, 622, 475),
+            Character("Skye", R.drawable.agent_skye, 1260, 445),
+            Character("Kay/o", R.drawable.agent_kayo, 622, 475),
+            Character("Gekko", R.drawable.agent_gekko, 1260, 445),
+            Character("Vyse", R.drawable.agent_vyse, 1260, 445)
+        ),
+        "Gözcü" to listOf(
+            Character("Killjoy", R.drawable.agent_killjoy, 958, 454),
+            Character("Cypher", R.drawable.agent_cypher, 1260, 445),
+            Character("Sage", R.drawable.agent_sage, 958, 454),
+            Character("Chamber", R.drawable.agent_chamber, 958, 454),
+            Character("Deadlock", R.drawable.agent_deadlock, 622, 475)
+        ),
+        "Kontrol Uzmanı" to listOf(
+            Character("Omen", R.drawable.agent_omen, 1260, 445),
+            Character("Brimstone", R.drawable.agent_brimstone, 622, 475),
+            Character("Viper", R.drawable.agent_viper, 958, 454),
+            Character("Astra", R.drawable.agent_astra, 958, 454),
+            Character("Harbor", R.drawable.agent_harbor, 958, 454),
+            Character("Tejo", R.drawable.agent_tejo, 958, 454)
+        )
+    )
+
+    private val allCharacters: List<Character> by lazy {
+        charactersByRole.values.flatten()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,23 +75,37 @@ class MainActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         Log.d(TAG, "Firebase başlatıldı")
 
-        characterGrid = findViewById(R.id.characterGrid)
-        val adapter = CharacterAdapter(this, characters)
-        characterGrid.adapter = adapter
+        setupViewPager()
+        setupTabLayout()
+    }
 
-        characterGrid.setOnItemClickListener { _, _, position, _ ->
-            val character = characters[position]
-            Log.d(TAG, "${character.name} karakteri seçildi. X: ${character.x}, Y: ${character.y}")
-            sendCommand("select", character.x, character.y)
-            Toast.makeText(this, "${character.name} seçildi", Toast.LENGTH_SHORT).show()
-            
-            // 1 saniye sonra kilitle
-            android.os.Handler().postDelayed({
-                Log.d(TAG, "Kilitleme komutu gönderiliyor...")
-                sendCommand("lock", 950, 867)
-                Toast.makeText(this, "Karakter kilitlendi", Toast.LENGTH_SHORT).show()
-            }, 1000)
+    private fun setupViewPager() {
+        viewPager = findViewById(R.id.viewPager)
+        val pagerAdapter = CharacterPagerAdapter(this, roles, charactersByRole, allCharacters) { character ->
+            handleCharacterSelection(character)
         }
+        viewPager.adapter = pagerAdapter
+    }
+
+    private fun setupTabLayout() {
+        tabLayout = findViewById(R.id.tabLayout)
+        
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = roles[position]
+        }.attach()
+    }
+
+    private fun handleCharacterSelection(character: Character) {
+        Log.d(TAG, "${character.name} karakteri seçildi. X: ${character.x}, Y: ${character.y}")
+        sendCommand("select", character.x, character.y)
+        Toast.makeText(this, "${character.name} seçildi", Toast.LENGTH_SHORT).show()
+        
+        // 1 saniye sonra kilitle
+        Handler(Looper.getMainLooper()).postDelayed({
+            Log.d(TAG, "Kilitleme komutu gönderiliyor...")
+            sendCommand("lock", 950, 867)
+            Toast.makeText(this, "Karakter kilitlendi", Toast.LENGTH_SHORT).show()
+        }, 1000)
     }
 
     private fun sendCommand(action: String, x: Int, y: Int) {

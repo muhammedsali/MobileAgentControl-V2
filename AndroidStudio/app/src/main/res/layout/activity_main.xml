@@ -19,49 +19,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gridCard"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@android:color/transparent"
+        app:tabTextColor="#80FFFFFF"
+        app:tabSelectedTextColor="@color/valorant_red"
+        app:tabIndicatorColor="@color/valorant_red"
+        app:tabMode="scrollable"
+        app:tabTextAppearance="@style/TabTextAppearance"
+        app:layout_constraintTop_toBottomOf="@id/titleText" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:cardBackgroundColor="@color/card_background"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@id/connectionCard"
-        app:layout_constraintTop_toBottomOf="@id/titleText">
-
-        <GridView
-            android:id="@+id/characterGrid"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:horizontalSpacing="16dp"
-            android:numColumns="3"
-            android:verticalSpacing="16dp" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/connectionCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardBackgroundColor="@color/card_background"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/connectButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:backgroundTint="@color/valorant_red"
-            android:padding="12dp"
-            android:text="Bağlan"
-            android:textSize="16sp"
-            app:cornerRadius="8dp" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout> 
